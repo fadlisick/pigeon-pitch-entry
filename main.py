@@ -10,7 +10,7 @@ import os
 import sys
 from pathlib import Path
 
-PITCH = "We are Uber, but for breadcrumbs: one tap and three hundred pigeons arrive before your sandwich hits the pavement."
+PITCH = "Our fintech app lets pigeons short-sell toddlers' ice cream cones three seconds before the scoop inevitably slides onto the sidewalk."
 
 CHAR_LIMIT = 200
 EM_DASH = "\u2014"
@@ -54,6 +54,8 @@ def check_entry(target: Path) -> None:
         raise SystemExit("entry.txt must not contain a tab")
     if len(data) != len(PITCH.encode("utf-8")):
         raise SystemExit("entry.txt byte length does not match the pitch")
+    if len(data) != 133:
+        raise SystemExit("entry.txt must be exactly 133 bytes")
     if data.endswith(b"\n"):
         raise SystemExit("entry.txt must not end with a newline")
     if (target.stat().st_mode & 0o777) != 0o644:
